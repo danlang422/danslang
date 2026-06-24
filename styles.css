@@ -237,6 +237,14 @@ body {
 .pf-card-link:hover { border-color: #bf6a3a; }
 
 @media (max-width: 720px) {
+  /* Nav */
+  .site-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 20px; }
+  .site-nav { gap: 4px; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+
+  /* Portfolio */
   .pf-featured-card { grid-template-columns: 1fr; }
   .pf-featured-shot { min-height: 220px; border-left: none; border-top: 1px solid #e3d9c4; }
   .pf-grid { grid-template-columns: 1fr; }
