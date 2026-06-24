@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio — Daniel Lang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Things Daniel Lang is building — a newbie dev, learning out loud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="page">
+
+  <!-- NAV -->
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="assets/glasses.svg" alt="Daniel's glasses" class="brand-glasses" />
+      <span class="brand-name">Daniel&nbsp;Lang</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-link">home</a>
+      <a href="portfolio.html" class="nav-link nav-link--active">portfolio</a>
+      <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="nav-link">github&nbsp;↗</a>
+    </nav>
+  </header>
+
+  <!-- INTRO -->
+  <section class="pf-intro">
+    <div class="eyebrow">things I'm building</div>
+    <h1 class="pf-title">A newbie dev, learning out loud.</h1>
+    <p class="pf-intro-text">I build with people in mind first. I care about clarity over cleverness, asking "who is this actually for?", and making things that feel friendly to use. Most of these are works in progress — that's the fun part. Here's what I've been tinkering with.</p>
+  </section>
+
+  <!-- stripe divider -->
+  <div class="stripe-wrap">
+    <div class="stripe">
+      <div class="stripe-seg" style="background:#bf6a3a"></div>
+      <div class="stripe-seg" style="background:#d6a32a"></div>
+      <div class="stripe-seg" style="background:#8a9a64"></div>
+      <div class="stripe-seg" style="background:#2f807c"></div>
+      <div class="stripe-seg" style="background:#4a6a86"></div>
+      <div class="stripe-seg" style="background:#2a3a52"></div>
+    </div>
+  </div>
+
+  <!-- FEATURED -->
+  <section class="pf-featured-section">
+    <div class="eyebrow eyebrow--muted">★ featured project</div>
+    <div class="pf-featured-card">
+      <div class="pf-featured-body">
+        <div class="pf-featured-badge-row">
+          <span class="pf-badge pf-badge--live">● LIVE · CENTERPIECE</span>
+        </div>
+        <h2 class="pf-featured-title">Here</h2>
+        <div class="pf-featured-url">sayhere.xyz</div>
+        <p class="pf-featured-desc">A space for genuine, in-the-moment connection. Built around the idea that being present with each other is something worth designing for. <em class="pf-muted-em">(You'll need to log in to see the good stuff — screenshots coming.)</em></p>
+        <div class="pf-tags">
+          <span class="pf-tag">React</span>
+          <span class="pf-tag">Supabase</span>
+        </div>
+        <div class="pf-featured-actions">
+          <a href="https://sayhere.xyz" target="_blank" rel="noopener" class="pf-btn-primary">Visit sayhere.xyz →</a>
+          <a href="https://github.com/danlang422/here-app" target="_blank" rel="noopener" class="pf-btn-outline">Repo ↗</a>
+        </div>
+      </div>
+      <div class="pf-featured-shot">
+        <div class="pf-shot-placeholder">
+          <div class="pf-shot-icon">🖼</div>
+          <div class="pf-shot-label">drop screenshot here<br><span>Here — main feed / connection view</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="pf-grid-section">
+    <div class="eyebrow eyebrow--muted">more projects</div>
+    <div class="pf-grid">
+
+      <div class="pf-card">
+        <div class="pf-card-shot">
+          <div class="pf-shot-placeholder pf-shot-placeholder--sm">🖼<br><span>journal — entry list</span></div>
+          <span class="pf-status pf-status--live">LIVE</span>
+        </div>
+        <div class="pf-card-body">
+          <h3 class="pf-card-title">Media Journal</h3>
+          <p class="pf-card-desc">Log and reflect on the media you consume — books, shows, music — in one tidy place.</p>
+          <div class="pf-tags pf-tags--sm">
+            <span class="pf-tag pf-tag--sm">Node</span>
+            <span class="pf-tag pf-tag--sm">Express</span>
+            <span class="pf-tag pf-tag--sm">Postgres</span>
+          </div>
+          <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="pf-card-link">Visit ↗</a>
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-card-shot">
+          <div class="pf-shot-placeholder pf-shot-placeholder--sm">🖼<br><span>dashboard — forecast</span></div>
+          <span class="pf-status pf-status--todo">NEEDS DEPLOY</span>
+        </div>
+        <div class="pf-card-body">
+          <h3 class="pf-card-title">Weather Dashboard</h3>
+          <p class="pf-card-desc">A clean, server-rendered look at current conditions and the days ahead.</p>
+          <div class="pf-tags pf-tags--sm">
+            <span class="pf-tag pf-tag--sm">Node</span>
+            <span class="pf-tag pf-tag--sm">Express</span>
+            <span class="pf-tag pf-tag--sm">EJS</span>
+          </div>
+          <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="pf-card-link">Repo ↗</a>
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-card-shot">
+          <div class="pf-shot-placeholder pf-shot-placeholder--sm">🖼<br><span>drum kit — pads</span></div>
+          <span class="pf-status pf-status--todo">NEEDS DEPLOY</span>
+        </div>
+        <div class="pf-card-body">
+          <h3 class="pf-card-title">Drum Kit</h3>
+          <p class="pf-card-desc">Tap a key, hit a drum. A small, tactile playground built in vanilla JS.</p>
+          <div class="pf-tags pf-tags--sm">
+            <span class="pf-tag pf-tag--sm">Vanilla JS</span>
+            <span class="pf-tag pf-tag--sm">HTML</span>
+            <span class="pf-tag pf-tag--sm">CSS</span>
+          </div>
+          <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="pf-card-link">Repo ↗</a>
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-card-shot">
+          <div class="pf-shot-placeholder pf-shot-placeholder--sm">🖼<br><span>tindog — landing</span></div>
+          <span class="pf-status pf-status--todo">NEEDS DEPLOY</span>
+        </div>
+        <div class="pf-card-body">
+          <h3 class="pf-card-title">TinDog</h3>
+          <p class="pf-card-desc">A playful landing page — Tinder, but for dogs. Built to sharpen layout fundamentals.</p>
+          <div class="pf-tags pf-tags--sm">
+            <span class="pf-tag pf-tag--sm">Bootstrap</span>
+            <span class="pf-tag pf-tag--sm">HTML</span>
+          </div>
+          <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="pf-card-link">Repo ↗</a>
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-card-shot">
+          <div class="pf-shot-placeholder pf-shot-placeholder--sm">🖼<br><span>keeper — notes grid</span></div>
+          <span class="pf-status pf-status--wip">IN PROGRESS</span>
+        </div>
+        <div class="pf-card-body">
+          <h3 class="pf-card-title">Keeper App</h3>
+          <p class="pf-card-desc">A Google-Keep-style note keeper. Currently migrating to a Vite build.</p>
+          <div class="pf-tags pf-tags--sm">
+            <span class="pf-tag pf-tag--sm">React</span>
+          </div>
+          <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="pf-card-link">Repo ↗</a>
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-card-shot">
+          <div class="pf-shot-placeholder pf-shot-placeholder--sm">🖼<br><span>capstone — 8-bit heart</span></div>
+          <span class="pf-status pf-status--todo">NEEDS DEPLOY</span>
+        </div>
+        <div class="pf-card-body">
+          <h3 class="pf-card-title">Capstone v2</h3>
+          <p class="pf-card-desc">A hand-built capstone with a little 8-bit pixel heart at its core.</p>
+          <div class="pf-tags pf-tags--sm">
+            <span class="pf-tag pf-tag--sm">HTML</span>
+            <span class="pf-tag pf-tag--sm">CSS</span>
+          </div>
+          <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="pf-card-link">Repo ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Daniel Lang · danslang.com</span>
+      <span class="footer-trek">🖖 live long and prosper</span>
+      <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="footer-link">github.com/danlang422</a>
+    </div>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
