@@ -4,7 +4,20 @@ const glassesWrap = document.getElementById('glassesWrap');
 const speechBubble = document.getElementById('speechBubble');
 
 if (glassesWrap && speechBubble) {
-  glassesWrap.addEventListener('mouseenter', () => { speechBubble.hidden = false; });
-  glassesWrap.addEventListener('mouseleave', () => { speechBubble.hidden = true; });
-  glassesWrap.addEventListener('click', () => { speechBubble.hidden = false; });
+  let bubbleTimer;
+  glassesWrap.addEventListener('mouseenter', () => {
+    bubbleTimer = setTimeout(() => {
+      speechBubble.classList.add('speech-bubble--pop');
+      speechBubble.hidden = false;
+    }, 650);
+  });
+  glassesWrap.addEventListener('mouseleave', () => {
+    clearTimeout(bubbleTimer);
+    speechBubble.hidden = true;
+    speechBubble.classList.remove('speech-bubble--pop');
+  });
+  glassesWrap.addEventListener('click', () => {
+    speechBubble.classList.add('speech-bubble--pop');
+    speechBubble.hidden = false;
+  });
 }
