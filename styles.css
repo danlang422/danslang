@@ -252,4 +252,17 @@ body {
   .pf-featured-card { grid-template-columns: 1fr; }
   .pf-featured-shot { min-height: 220px; border-left: none; border-top: 1px solid #e3d9c4; }
   .pf-grid { grid-template-columns: 1fr; }
+  .pf-intro-text a,
+  .body-text a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 2px solid #d6a32a;
+    padding-bottom: 1px;
+    transition: border-color .18s, color .18s;
+  }
+  .pf-intro-text a:hover,
+  .body-text a:hover {
+    border-color: #bf6a3a;
+    color: #bf6a3a;
+  }
 }
