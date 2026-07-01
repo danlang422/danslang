@@ -266,3 +266,53 @@ body {
     color: #bf6a3a;
   }
 }
+/* HERE STORY MODAL */
+.story-modal {
+  border: none;
+  border-radius: 22px;
+  padding: 0;
+  max-width: 640px;
+  width: 90vw;
+  background: transparent;
+  box-shadow: 0 30px 60px rgba(44,51,64,.28);
+}
+.story-modal::backdrop {
+  background: rgba(42,58,82,.55);
+  backdrop-filter: blur(2px);
+}
+.story-modal-inner {
+  background: #fffdf7;
+  border: 1px solid #e3d9c4;
+  border-radius: 22px;
+  padding: 40px 40px 36px;
+  max-height: 82vh;
+  overflow-y: auto;
+  position: relative;
+}
+.story-modal-close {
+  position: absolute;
+  top: 18px; right: 18px;
+  width: 34px; height: 34px;
+  border-radius: 999px;
+  border: 1px solid #e3d9c4;
+  background: #f5eede;
+  color: #2c3340;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background .18s, transform .18s;
+}
+.story-modal-close:hover { background: #eadfc6; transform: rotate(90deg); }
+.story-modal-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 4vw, 34px);
+  letter-spacing: -0.02em;
+  margin: 6px 0 20px;
+  padding-right: 30px;
+}
+.story-modal-body .body-text { font-size: 18px; line-height: 1.65; margin: 0 0 20px; }
+.story-modal-body .body-text:last-child { margin-bottom: 0; }
+
+@media (max-width: 720px) {
+  .story-modal-inner { padding: 30px 24px 28px; }
+}
