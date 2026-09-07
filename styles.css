@@ -266,6 +266,35 @@ body {
   .pf-featured-shot { min-height: 220px; border-left: none; border-top: 1px solid #e3d9c4; }
   .pf-grid { grid-template-columns: 1fr; }
 }
+/* BLOG */
+.blog-intro { max-width: 760px; width: 100%; margin: 0 auto; padding: 38px 32px 10px; }
+.blog-list {
+  list-style: none; max-width: 760px; width: 100%; margin: 0 auto; padding: 20px 32px 60px;
+}
+.blog-list-item {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: 18px 0; border-bottom: 1px solid #e3d9c4;
+}
+.blog-list-title-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.blog-list-item:first-child { border-top: 1px solid #e3d9c4; }
+.blog-list-item a {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 20px;
+  color: #2c3340; text-decoration: none; border-bottom: 2px solid transparent;
+  transition: border-color .18s, color .18s;
+}
+.blog-list-item a:hover { border-color: #bf6a3a; color: #bf6a3a; }
+.blog-date { font-family: 'Space Mono', monospace; font-size: 13px; color: #8a8273; white-space: nowrap; }
+
+/* BLOG POST */
+.post-body { max-width: 720px; width: 100%; margin: 0 auto; padding: 38px 32px 60px; }
+.post-title {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+  font-size: clamp(34px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 8px;
+}
+.post-date { font-family: 'Space Mono', monospace; font-size: 13px; color: #8a8273; margin: 0 0 30px; }
+.post-body p { font-size: 20px; line-height: 1.65; margin: 0 0 24px; }
+.post-body p:last-child { margin-bottom: 0; }
+
 /* HERE STORY MODAL */
 .story-modal {
   border: none;

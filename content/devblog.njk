@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Devblog
+---
+<section class="blog-intro">
+  <div class="eyebrow">writing → devblog</div>
+  <h1 class="pf-title">Devblog</h1>
+  <p class="pf-intro-text">Notes from building things — mostly Here and this site.</p>
+</section>
+
+<ul class="blog-list">
+{%- for post in collections.devblog | reverse %}
+  <li class="blog-list-item">
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <span class="blog-date">{{ post.date.toDateString() }}</span>
+  </li>
+{%- endfor %}
+</ul>

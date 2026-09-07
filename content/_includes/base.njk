@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ title }} — Daniel Lang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ description or 'Daniel Lang — reader, writer, educator, scholar, and newbie web developer.' }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="page">
+
+  <!-- NAV -->
+  <header class="site-header">
+    <a href="/" class="brand">
+      <img src="/assets/glasses.svg" alt="Daniel's glasses" class="brand-glasses" />
+      <span class="brand-name">Daniel&nbsp;Lang</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/" class="nav-link">home</a>
+      <a href="/portfolio.html" class="nav-link">portfolio</a>
+      <a href="/posts/" class="nav-link nav-link--active">posts</a>
+      <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="nav-link">github&nbsp;↗</a>
+    </nav>
+  </header>
+
+  <!-- stripe divider -->
+  <div class="stripe-wrap">
+    <div class="stripe">
+      <div class="stripe-seg" style="background:#bf6a3a"></div>
+      <div class="stripe-seg" style="background:#d6a32a"></div>
+      <div class="stripe-seg" style="background:#8a9a64"></div>
+      <div class="stripe-seg" style="background:#2f807c"></div>
+      <div class="stripe-seg" style="background:#4a6a86"></div>
+      <div class="stripe-seg" style="background:#2a3a52"></div>
+    </div>
+  </div>
+
+  <main class="blog-main">
+    {{ content | safe }}
+  </main>
+
+</div>
+</body>
+</html>

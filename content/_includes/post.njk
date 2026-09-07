@@ -1,0 +1,8 @@
+---
+layout: base.njk
+---
+<article class="post-body">
+  <h1 class="post-title">{{ title }}</h1>
+  <p class="post-date">{{ date.toDateString() }}</p>
+  {{ content | safe }}
+</article>

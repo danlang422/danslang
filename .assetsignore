@@ -1,0 +1,10 @@
+node_modules
+.git
+.claude
+content
+.eleventy.js
+wrangler.jsonc
+package.json
+package-lock.json
+.gitignore
+.assetsignore
