@@ -11,9 +11,15 @@
 
 ## Overview
 
-**Here** is a scheduling, attendance, and engagement app built for schools where a traditional bell schedule doesn't describe how students actually spend their day. It was designed specifically for City View Community High School in Cedar Rapids, Iowa.  A magnet high school where students split time across internships, online and community college courses, independent study, classes at other high schools, and traditional, in-person classes, often with a different mix for every single student.
+**Here** is a scheduling, attendance, and engagement app built for schools where a traditional bell schedule doesn't describe how students actually spend their day. It was designed specifically for City View Community High School in Cedar Rapids, Iowa.  City View is a magnet high school where students split time across internships, online and community college courses, independent study, classes at other high schools, and traditional, in-person classes, often with a different mix for every single student.
 
-![Here landing page](/assets/here-case-study/here-landing-page.png)
+<figure class="post-img-fig">
+<div class="post-img-wrap post-img-wrap--crop">
+<img src="/assets/here-case-study/here-landing-page.png" alt="Here landing page">
+<span class="post-img-expand">view full ↗</span>
+</div>
+<figcaption>Here's landing page while live for testing at sayhere.xyz</figcaption>
+</figure>
 
 I'm Daniel Lang, a former high school teacher who moved into development after a full-stack bootcamp, and I started building Here while still subbing at City View after budget cuts eliminated my full time position. Here is a solo project: I designed, built, and maintained every part of it, from the database schema to the security audit.
 
@@ -22,14 +28,14 @@ I'm Daniel Lang, a former high school teacher who moved into development after a
 Traditional Student Information Systems (Infinite Campus, PowerSchool, and similar tools) assume every student follows the same set of fixed periods. That works fine for a conventional schedule, but it breaks down for a school like City View, where:
 
 - Students rotate through **A/B day schedules**; not because City View itself uses rotating days, but because some of its students are dual-enrolled at other district high schools that do.
-- Many students spend blocks of their day at **off-campus internships**, **community college courses (Kirkwood)**, or in **independent study sessions**, none of which map cleanly to a room and a bell.
-- Due to state and district requirements, attendance still needs to be reported through a traditional SIS, so Here "rolls up" attendance into something a block or period-based mental model can make sense of, even when the underlying schedule is anything but.
+- Many students spend chunks of their day at **off-campus internships**, **community college courses**, or in **independent study sessions**, none of which map cleanly to a room and a bell.
+- State and district policies require that attendance be reported through a traditional SIS, so Here "rolls up" attendance into a block or period-based format, even when the underlying schedule is anything but.
 
-I'd actually already tried to solve a piece of this problem once before, with an earlier tool called InternTracker, focused specifically on internship tracking. Building it taught me that the real problem was bigger than internships; it was the whole schedule. Here is the rebuild that took that lesson seriously.
+I'd actually already tried to solve a piece of this problem once before, with an earlier tool (tentatively) called InternTracker, focused specifically on internship tracking. But as I worked on getting that to accommodate additional schedule weirdness, it became clear that the app needed to address a student's whole schedule, not just internships. Here is the rebuild intended to do just that. 
 
 ## Hard problems solved
 
-**The scheduling model.** The schema went through significant iteration before landing on its current shape. Early versions tried to handle exceptions to a student's default schedule with an override/priority system that got complicated fast. The breakthrough was realizing that students could only be in one place at one time. This sounds obvious, but it meant separating a student's enrollment in an activity from that activity's default schedule. 
+**The scheduling model.** The schema went through *significant* iteration before landing on its current shape. In fact, I spent quite a while just working on the schema before I touched anything else. Early versions tried to handle exceptions to a student's default schedule with an override/priority system that got complicated fast. The breakthrough was realizing that students could only be in one place at one time. This sounds obvious, but it meant separating a student's enrollment in an activity from that activity's default schedule. 
 
 For example: a student enrolled in Advisory (M–F, 7:30–9:00) who also takes a college course Tu/Th during that same window.
 
@@ -42,10 +48,12 @@ For example: a student enrolled in Advisory (M–F, 7:30–9:00) who also takes 
 - Advisory: M–F, 7:30–9:00 → adjusted to **MWF only**
 - College Course: Tu/Th, 7:30–9:00
 
-The difference isn't really about how it looks on screen; both models end up showing the same schedule to users. It's what's *true underneath*. In the old model, the student was still enrolled in five days of Advisory and the UI was lying about it a little. In the new model, they're actually enrolled in three. Again, this may not seem terribly complicated, but this is just one example with clear priorities: if the student is scheduled for a college course, that takes priority over the activities at City View. But what if they're also scheduled for a rotating, "B-Day" course at another high school that partly overlaps with Advisory, the college course, or both? Rather than attempting to programmatically juggle overlapping priorities, individual enrollment customization allowed student schedules to reflect where that student was actually expected to be. That reframe is what let enrollment-level scheduling — per-student day patterns, rotation, and time overrides, all editable inline — actually ship.
+The difference is less about how it looks on screen; both models end up showing the same schedule to users. It's more about de-tangling things so that a student's actual schedule is reflected in the app, regardless of the overlaps and complications. In the old model, the student was still enrolled in five days of Advisory and the UI was lying about it a little. In the new model, they're actually enrolled in three. 
+
+Again, this may not seem terribly complicated, but this is just one example with clear priorities: if the student is scheduled for a college course, that takes priority over the activities at City View. But what if they're also scheduled for a rotating, "B-Day" course at another high school that partly overlaps with Advisory, the college course, or both? Rather than attempting to programmatically juggle overlapping priorities to handle a variety of scenarios, individual enrollment customization allowed student schedules to reflect where that student was actually expected to be. That reframe is what let enrollment-level scheduling actually ship: per-student day patterns, rotation, and time overrides, all editable inline, and visible to all relevant users. 
 
 **Activity 'Properties' vs. Activity 'Types'**
-Another aspect of the app that ended up being particularly powerful was attaching properties to activities, rather than relying on activity 'types.' In early versions, it seemed to make sense to define various types of activity as a way of enabling or disabling certain behaviors in the app. An internship activity, for example, would require students to check-in/out with geolocation enabled. Students working independently might have a required check-in/out, but no geolocation. Both require a City View staff member to monitor attendance, whereas attendance is handled elsewhere for college courses or classes at another high school. 
+In other early versions, it seemed to make sense to define various types of activity as a way of enabling or disabling certain behaviors in the app. An internship activity, for example, would require students to check-in/out with geolocation enabled. Students working independently might have a required check-in/out, but no geolocation. Both require a City View staff member to monitor attendance, whereas attendance is handled elsewhere for college courses or classes at another high school. 
 
 Instead of baking these and other behaviors into specific activity types, Here utilizes a set of properties that can be customized for each activity, as needed: 
 - Requires Attendance
@@ -67,7 +75,7 @@ Instead of baking these and other behaviors into specific activity types, Here u
 
 **Multi-staff activities.** Real activities often have more than one adult attached to them: a teacher and a monitor, or two co-teachers. Here replaced a rigid `teacher_id`/`monitor_id` pair on each activity with a proper `activity_staff` junction table, so any activity can carry an arbitrary set of staff with distinct roles. This also would allow for the addition of internship mentors as staff, an in-app role that was envisioned, but not built out. 
 
-**The teacher agenda.** This went through the most design iteration of any single feature. Teachers needed a day view that reflects actual clock time rather than abstract block labels, resolves visual overlaps when activities run concurrently, clusters same-time/same-role activities instead of listing them as noise, and surfaces late arrivals without breaking the rest of the layout. It shipped as five distinct sub-areas (overlap resolution, role-aware clustering, late-arrival handling, activity or block-based attendance, and a "visible to all staff" sidebar) designed and built in sequence.
+**The teacher agenda.** This went through the most design iteration of any single feature. Teachers needed a day view that reflects actual clock time rather than abstract block labels, resolves visual overlaps when activities run concurrently, clusters same-time/same-role activities instead of listing them as noise, and surfaces late arrivals without breaking the rest of the layout. It shipped as five distinct sub-areas (overlap resolution, role-aware clustering, late-arrival handling, activity *or* block-based attendance (because sometimes, you just need to take attendance for all of "Block X"), and a "visible to all staff" sidebar) designed and built in sequence.
 
 ## A tour of the app
 
@@ -76,7 +84,7 @@ Instead of baking these and other behaviors into specific activity types, Here u
 ![Sign in](/assets/here-case-study/here-sign-in-ss.png)
 ![About page](/assets/here-case-study/here-about-page.png)
 
-**Admin: the calendar.** The admin calendar shows every activity across every organization at a glance, with per-day-per-block popovers breaking down exactly who's staffed where.
+**Admin: the calendar.** The admin calendar shows every activity across every organization at a glance, grouping by block (if assigned) or by timeframe. Each activity cluster shows simplified details on hover, with per-day-per-cluster popovers breaking down exactly who's staffed and scheduled where.
 
 ![Admin calendar popover](/assets/here-case-study/here-admin-calendar-popover.png)
 
@@ -111,7 +119,7 @@ A short screen recording shows the student side of this: checking in, leaving a 
 
 ![Teacher agenda](/assets/here-case-study/here-teacher-agenda-ss.png)
 
-**Teacher: attendance.** One-tap attendance per student, including handling for students arriving late or leaving early mid-block.
+**Teacher: attendance.** One-tap attendance per student, including handling for students arriving late or leaving early mid-activity.
 
 ![Teacher attendance](/assets/here-case-study/here-teacher-attendance-ss.png)
 

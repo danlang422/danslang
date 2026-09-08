@@ -1,4 +1,5 @@
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const glassesWrap = document.getElementById('glassesWrap');
 const speechBubble = document.getElementById('speechBubble');
@@ -21,15 +22,23 @@ if (glassesWrap && speechBubble) {
     speechBubble.hidden = false;
   });
 }
-// HERE STORY MODAL
-const hereStoryBtn = document.getElementById('hereStoryBtn');
-const hereStoryModal = document.getElementById('here-story-modal');
-const hereStoryClose = document.getElementById('hereStoryClose');
 
-if (hereStoryBtn && hereStoryModal) {
-  hereStoryBtn.addEventListener('click', () => hereStoryModal.showModal());
-  hereStoryClose?.addEventListener('click', () => hereStoryModal.close());
-  hereStoryModal.addEventListener('click', (e) => {
-    if (e.target === hereStoryModal) hereStoryModal.close();
+// CASE STUDY IMAGE LIGHTBOX
+const lightbox = document.getElementById('image-lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+
+if (lightbox && lightboxImg) {
+  document.querySelectorAll('.post-body img').forEach((img) => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt || '';
+      lightbox.showModal();
+    });
+  });
+
+  lightboxClose?.addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.close();
   });
 }

@@ -239,6 +239,7 @@ body {
 .pf-status--live { color: #2f807c; background: #dff0ec; }
 .pf-status--todo { color: #a87d18; background: #f7ecd2; }
 .pf-status--wip { color: #4a6a86; background: #eef1f5; }
+.pf-status--case-study { color: #5f6b3f; background: #eef0e2; }
 .pf-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
 .pf-card-title {
   font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 23px;
@@ -252,6 +253,7 @@ body {
   color: #bf6a3a; border-bottom: 2px solid transparent; align-self: flex-start; transition: border-color .18s;
 }
 .pf-card-link:hover { border-color: #bf6a3a; }
+.pf-card-links { display: flex; flex-wrap: wrap; gap: 16px; align-self: flex-start; }
 
 @media (max-width: 720px) {
   /* Nav */
@@ -325,32 +327,32 @@ body {
   border-radius: 12px;
   box-shadow: 0 14px 30px rgba(44,51,64,.08);
 }
-/* HERE STORY MODAL */
-.story-modal {
+/* LIGHTBOX (case-study images) */
+.lightbox-dialog {
   border: none;
   border-radius: 22px;
   padding: 0;
-  max-width: 640px;
+  max-width: 900px;
   width: 90vw;
   background: transparent;
   box-shadow: 0 30px 60px rgba(44,51,64,.28);
 }
-.story-modal::backdrop {
+.lightbox-dialog::backdrop {
   background: rgba(42,58,82,.55);
   backdrop-filter: blur(2px);
 }
-.story-modal-inner {
+.lightbox-inner {
   background: #fffdf7;
   border: 1px solid #e3d9c4;
   border-radius: 22px;
-  padding: 40px 40px 36px;
-  max-height: 82vh;
+  padding: 20px;
+  max-height: 88vh;
   overflow-y: auto;
   position: relative;
 }
-.story-modal-close {
+.lightbox-close {
   position: absolute;
-  top: 18px; right: 18px;
+  top: 14px; right: 14px;
   width: 34px; height: 34px;
   border-radius: 999px;
   border: 1px solid #e3d9c4;
@@ -360,18 +362,61 @@ body {
   cursor: pointer;
   transition: background .18s, transform .18s;
 }
-.story-modal-close:hover { background: #eadfc6; transform: rotate(90deg); }
-.story-modal-title {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-weight: 800;
-  font-size: clamp(26px, 4vw, 34px);
-  letter-spacing: -0.02em;
-  margin: 6px 0 20px;
-  padding-right: 30px;
+.lightbox-close:hover { background: #eadfc6; transform: rotate(90deg); }
+.lightbox-inner img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin: 0;
 }
-.story-modal-body .body-text { font-size: 18px; line-height: 1.65; margin: 0 0 20px; }
-.story-modal-body .body-text:last-child { margin-bottom: 0; }
 
 @media (max-width: 720px) {
-  .story-modal-inner { padding: 30px 24px 28px; }
+  .lightbox-inner { padding: 14px; }
+}
+
+/* CASE STUDY IMAGE EXPAND */
+.post-body img { cursor: zoom-in; transition: opacity .15s; }
+.post-body img:hover { opacity: .92; }
+
+.post-img-wrap { position: relative; margin: 0 0 24px; cursor: zoom-in; }
+.post-img-wrap img { margin: 0; }
+
+.post-img-wrap--crop {
+  max-height: 340px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #e3d9c4;
+  box-shadow: 0 14px 30px rgba(44,51,64,.08);
+}
+.post-img-wrap--crop img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.post-img-expand {
+  position: absolute;
+  bottom: 10px; right: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #f5eede;
+  background: rgba(42,58,82,.75);
+  padding: 5px 10px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.post-img-fig { margin: 0 0 24px; }
+.post-img-fig .post-img-wrap { margin: 0 0 10px; }
+.post-img-fig img { margin: 0 0 10px; }
+.post-img-fig figcaption {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: #8a8273;
+  text-align: center;
 }

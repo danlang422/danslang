@@ -51,37 +51,29 @@
     </div>
   </div>
 
-  <!-- FEATURED -->
-  <section class="pf-featured-section">
-    <div class="eyebrow eyebrow--muted">★ featured project</div>
-    <div class="pf-featured-card">
-      <div class="pf-featured-body">
-        <div class="pf-featured-badge-row">
-          <span class="pf-badge pf-badge--live">● LIVE · CENTERPIECE</span>
-        </div>
-        <h2 class="pf-featured-title">Here</h2>
-        <div class="pf-featured-url">sayhere.xyz</div>
-        <p class="pf-featured-desc">A scheduling and attendance app built for schools with unique or unusual schedules. Say "here!" 👋 <em class="pf-muted-em">(Check the landing page for more screenshots!)</em></p>
-        <div class="pf-tags">
-          <span class="pf-tag">React</span>
-          <span class="pf-tag">Supabase</span>
-        </div>
-        <div class="pf-featured-actions">
-          <a href="https://sayhere.xyz" target="_blank" rel="noopener" class="pf-btn-primary">Visit sayhere.xyz →</a>
-          <a href="https://github.com/danlang422/here-app" target="_blank" rel="noopener" class="pf-btn-outline">Repo ↗</a>
-          <button type="button" class="pf-btn-outline" id="hereStoryBtn" aria-haspopup="dialog" aria-controls="here-story-modal">Details</button>
-        </div>
-      </div>
-      <div class="pf-featured-shot">
-        <img src="assets/here-admin-calendar-ss.png" alt="Here app admin calendar screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" />
-      </div>
-    </div>
-  </section>
-
   <!-- GRID -->
   <section class="pf-grid-section">
     <div class="eyebrow eyebrow--muted">more projects</div>
     <div class="pf-grid">
+
+      <div class="pf-card">
+        <div class="pf-card-shot">
+          <img src="assets/here-admin-calendar-ss.png" alt="Here app admin calendar screenshot" class="pf-card-img" />
+          <span class="pf-status pf-status--case-study">CASE STUDY</span>
+        </div>
+        <div class="pf-card-body">
+          <h3 class="pf-card-title">Here</h3>
+          <p class="pf-card-desc">A scheduling and attendance app built for schools with unique or unusual schedules. Say "here!" 👋</p>
+          <div class="pf-tags pf-tags--sm">
+            <span class="pf-tag pf-tag--sm">React</span>
+            <span class="pf-tag pf-tag--sm">Supabase</span>
+          </div>
+          <div class="pf-card-links">
+            <a href="/posts/here-case-study/" class="pf-card-link">Case Study →</a>
+            <a href="https://github.com/danlang422/here-app" target="_blank" rel="noopener" class="pf-card-link">Repo ↗</a>
+          </div>
+        </div>
+      </div>
 
       <div class="pf-card">
         <div class="pf-card-shot">
@@ -151,18 +143,6 @@
 
     </div>
   </section>
-  <dialog id="here-story-modal" class="story-modal">
-    <div class="story-modal-inner">
-      <button type="button" class="story-modal-close" id="hereStoryClose" aria-label="Close">✕</button>
-      <div class="eyebrow eyebrow--muted">the story behind here</div>
-      <h2 class="story-modal-title">How did we get Here?</h2>
-      <div class="story-modal-body">
-        <p class="body-text">The problem I was trying to solve by creating this app begins with traditional student information systems, which assume everyone runs on the same block schedule — which works fine until it doesn't. At City View, where I'd taught and then kept subbing, kids had internships scheduled around classes but not aligned to any period. They took college courses off-site, traveled to other high schools for classes City View didn't offer, worked through online coursework from home with a parent's permission. Nothing about that fits into a standard SIS.</p>
-        <p class="body-text">I built Here (originally InternTracker) to bridge that gap: students see their actual schedule — an internship at its real times, a college course wherever it falls — with geolocation and check-in/out flows for anything off-campus, all rolling up into a report the school can drop straight into their official attendance system.</p>
-        <p class="body-text">This is also where AI enters the story. I'd finished the bootcamp almost entirely the old-school way — StackOverflow, lots of googling, very little AI help. Here was different: AI (mostly Claude) could write code faster and often better than I could. That was exciting and unsettling in about equal measure. But I knew "vibe coding" wasn't going to work. Every piece of Here, whether I wrote it or AI did, came out of a real design conversation first: working through the database schema, adjusting it as I found new edge cases in how kids actually spend their days, adding features once I understood the shape of the problem. That workflow has served me well, though I know I still have a lot to learn.</p>
-      </div>
-    </div>
-  </dialog>
   <div class="spacer"></div>
 
   <!-- FOOTER -->

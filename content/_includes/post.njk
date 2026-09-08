@@ -6,3 +6,10 @@ layout: base.njk
   <p class="post-date">{{ date.toDateString() }}</p>
   {{ content | safe }}
 </article>
+
+<dialog id="image-lightbox" class="lightbox-dialog">
+  <div class="lightbox-inner">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+</dialog>
