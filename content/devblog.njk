@@ -11,7 +11,7 @@ title: Devblog
 <ul class="blog-list">
 {%- for post in collections.devblog | reverse %}
   <li class="blog-list-item">
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <a href="/posts/{{ post.fileSlug }}/">{{ post.data.title }}</a>
     <span class="blog-date">{{ post.date.toDateString() }}</span>
   </li>
 {%- endfor %}
