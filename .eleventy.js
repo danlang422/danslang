@@ -9,12 +9,16 @@ module.exports = function (eleventyConfig) {
     return `<figure class="post-img-fig post-img-fig--row"><div class="post-img-row">${content}</div><figcaption>${caption}</figcaption></figure>`;
   });
 
+  eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("styles.css");
+  eleventyConfig.addPassthroughCopy("script.js");
+
   return {
     markdownTemplateEngine: "njk",
     dir: {
       input: "content",
       includes: "_includes",
-      output: "posts"
+      output: "_site"
     }
   };
 };

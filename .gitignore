@@ -3,5 +3,4 @@
 node_modules
 
 # Eleventy build output (Cloudflare builds this fresh on deploy)
-/posts/
-/blog/
+/_site/

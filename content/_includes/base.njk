@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>{{ title }} — Daniel Lang</title>
+<title>{% if titleOverride %}{{ titleOverride }}{% else %}{{ title }} — Daniel Lang{% endif %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ description or 'Daniel Lang — reader, writer, educator, scholar, and newbie web developer.' }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,9 +25,9 @@
       <span class="brand-name">Daniel&nbsp;Lang</span>
     </a>
     <nav class="site-nav">
-      <a href="/" class="nav-link">home</a>
-      <a href="/portfolio.html" class="nav-link">portfolio</a>
-      <a href="/posts/" class="nav-link nav-link--active">posts</a>
+      <a href="/" class="nav-link{% if page.url == "/" %} nav-link--active{% endif %}">home</a>
+      <a href="/portfolio/" class="nav-link{% if page.url == "/portfolio/" %} nav-link--active{% endif %}">portfolio</a>
+      <a href="/posts/" class="nav-link{% if page.url.startsWith("/posts/") %} nav-link--active{% endif %}">posts</a>
       <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="nav-link">github&nbsp;↗</a>
     </nav>
   </header>
@@ -47,6 +47,15 @@
   <main class="blog-main">
     {{ content | safe }}
   </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© <span id="year"></span> <a href="mailto:danslang@gmail.com">Daniel Lang</a> · danslang.com</span>
+      <span class="footer-trek">🖖 live long and prosper</span>
+      <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="footer-link">github.com/danlang422</a>
+    </div>
+  </footer>
 
 </div>
 <script src="/script.js"></script>
