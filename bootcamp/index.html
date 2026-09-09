@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Early Web Work — Daniel Lang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A collection of early projects from Daniel Lang's web development bootcamp — HTML, CSS, Bootstrap, and vanilla JS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: 'Newsreader', Georgia, serif;
+  background: #f5eede;
+  color: #2c3340;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: #d6a32a; color: #2c3340; }
+
+.grain {
+  position: fixed; inset: 0; z-index: 60; pointer-events: none;
+  opacity: 0.05; mix-blend-mode: multiply;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%22160%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');
+}
+
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* NAV */
+.site-header {
+  max-width: 1080px; width: 100%; margin: 0 auto; padding: 26px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #2c3340; }
+.brand-name { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+.site-nav { display: flex; align-items: center; gap: 8px; font-family: 'Space Mono', monospace; font-size: 13px; }
+.nav-link { text-decoration: none; color: #2c3340; padding: 8px 14px; border-radius: 999px; transition: background .2s; }
+.nav-link:hover { background: #eadfc6; }
+
+/* stripe divider */
+.stripe-wrap { max-width: 1080px; width: 100%; margin: 0 auto; padding: 0 32px; }
+.stripe { display: flex; height: 8px; border-radius: 999px; overflow: hidden; }
+.stripe-seg { flex: 1; }
+
+/* INTRO */
+.intro { max-width: 760px; width: 100%; margin: 0 auto; padding: 46px 32px 10px; }
+.eyebrow {
+  font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #8a8273; margin-bottom: 16px;
+}
+.intro-title {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+  font-size: clamp(34px, 5vw, 54px); line-height: 1.04; letter-spacing: -0.03em;
+  margin: 0 0 20px;
+}
+.intro-text { font-size: 19px; line-height: 1.65; margin: 0; color: #3a4150; max-width: 54ch; }
+
+/* DEMO GRID */
+.demo-section { max-width: 1080px; width: 100%; margin: 0 auto; padding: 50px 32px 8px; }
+.demo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+.demo-card {
+  background: #fffdf7; border: 1px solid #e3d9c4; border-radius: 18px; overflow: hidden;
+  display: flex; flex-direction: column; text-decoration: none; color: inherit;
+  transition: transform .2s, box-shadow .2s;
+}
+.demo-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(44,51,64,.12); }
+
+.demo-card-banner {
+  height: 160px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 44px;
+  border-bottom: 1px solid #e3d9c4;
+}
+.banner--drums { background: linear-gradient(135deg, #2a3a52 0%, #4a6a86 100%); }
+.banner--simon { background: linear-gradient(135deg, #1a3322 0%, #2f807c 100%); }
+.banner--tindog { background: linear-gradient(135deg, #6b2a3a 0%, #bf6a3a 100%); }
+.banner--capstone { background: linear-gradient(135deg, #3a2a52 0%, #8a6ab4 100%); }
+
+.demo-card-body { padding: 22px 22px 26px; display: flex; flex-direction: column; flex: 1; }
+.demo-card-title {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px;
+  letter-spacing: -0.02em; margin: 0 0 8px;
+}
+.demo-card-desc { font-size: 16px; line-height: 1.55; margin: 0 0 18px; color: #5b6472; flex: 1; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.tag {
+  font-family: 'Space Mono', monospace; font-size: 11px; color: #4a6a86;
+  background: #eef1f5; border: 1px solid #dde3ec; padding: 4px 9px; border-radius: 999px;
+}
+
+.demo-link {
+  text-decoration: none; font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700;
+  color: #f5eede; background: #bf6a3a; padding: 10px 18px; border-radius: 999px;
+  align-self: flex-start; transition: transform .18s; display: inline-block;
+}
+.demo-link:hover { transform: translateY(-2px); }
+
+/* SPACER / FOOTER */
+.spacer { flex: 1; }
+.site-footer { border-top: 1px solid #e3d9c4; margin-top: 64px; }
+.footer-inner {
+  max-width: 1080px; width: 100%; margin: 0 auto; padding: 26px 32px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 16px; font-family: 'Space Mono', monospace; font-size: 13px; color: #6a6357;
+}
+.footer-trek { color: #2f807c; }
+.footer-link { color: #2c3340; text-decoration: none; border-bottom: 2px solid #d6a32a; padding-bottom: 1px; }
+
+@media (max-width: 720px) {
+  .site-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
+  .demo-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="page">
+
+  <!-- NAV -->
+  <header class="site-header">
+    <a href="/" class="brand">
+      <span class="brand-name">Daniel&nbsp;Lang</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/" class="nav-link">home</a>
+      <a href="/portfolio/" class="nav-link">portfolio</a>
+    </nav>
+  </header>
+
+  <!-- STRIPE -->
+  <div class="stripe-wrap">
+    <div class="stripe">
+      <div class="stripe-seg" style="background:#bf6a3a"></div>
+      <div class="stripe-seg" style="background:#d6a32a"></div>
+      <div class="stripe-seg" style="background:#8a9a64"></div>
+      <div class="stripe-seg" style="background:#2f807c"></div>
+      <div class="stripe-seg" style="background:#4a6a86"></div>
+      <div class="stripe-seg" style="background:#2a3a52"></div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="eyebrow">early web work · bootcamp projects</div>
+    <h1 class="intro-title">Learning in&nbsp;public.</h1>
+    <p class="intro-text">Four projects from my web development bootcamp — HTML, CSS, Bootstrap, and vanilla JavaScript. Not polished products, but honest snapshots of how the fundamentals clicked into place.</p>
+  </section>
+
+  <!-- DEMOS -->
+  <section class="demo-section">
+    <div class="demo-grid">
+
+      <a href="drum-kit-demo/index.html" class="demo-card">
+        <div class="demo-card-banner banner--drums">🥁</div>
+        <div class="demo-card-body">
+          <h2 class="demo-card-title">Drum Kit</h2>
+          <p class="demo-card-desc">Tap a key or click a pad to trigger drum sounds. Built to learn DOM event handling and audio in vanilla JS.</p>
+          <div class="tag-row">
+            <span class="tag">Vanilla JS</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+          <span class="demo-link">Play it →</span>
+        </div>
+      </a>
+
+      <a href="simon-game-demo/index.html" class="demo-card">
+        <div class="demo-card-banner banner--simon">🟩</div>
+        <div class="demo-card-body">
+          <h2 class="demo-card-title">Simon Game</h2>
+          <p class="demo-card-desc">The classic memory sequence game. Press a key to start — how far can you get? An exercise in game logic and jQuery.</p>
+          <div class="tag-row">
+            <span class="tag">jQuery</span>
+            <span class="tag">Vanilla JS</span>
+            <span class="tag">CSS</span>
+          </div>
+          <span class="demo-link">Play it →</span>
+        </div>
+      </a>
+
+      <a href="tin-dog-site-demo/index.html" class="demo-card">
+        <div class="demo-card-banner banner--tindog">🐕</div>
+        <div class="demo-card-body">
+          <h2 class="demo-card-title">TinDog</h2>
+          <p class="demo-card-desc">Tinder, but for dogs. A playful landing page built to sharpen Bootstrap grid and responsive layout fundamentals.</p>
+          <div class="tag-row">
+            <span class="tag">Bootstrap</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+          <span class="demo-link">See it →</span>
+        </div>
+      </a>
+
+      <a href="portfolio-site-demo/index.html" class="demo-card">
+        <div class="demo-card-banner banner--capstone">🖤</div>
+        <div class="demo-card-body">
+          <h2 class="demo-card-title">CSS Capstone</h2>
+          <p class="demo-card-desc">A hand-built personal site from the CSS capstone unit — featuring custom SVG illustrations made from scratch in Inkscape.</p>
+          <div class="tag-row">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">SVG</span>
+          </div>
+          <span class="demo-link">See it →</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Daniel Lang · danslang.com</span>
+      <span class="footer-trek">🖖 live long and prosper</span>
+      <a href="https://github.com/danlang422" target="_blank" rel="noopener" class="footer-link">github.com/danlang422</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

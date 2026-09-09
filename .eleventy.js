@@ -12,6 +12,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("styles.css");
   eleventyConfig.addPassthroughCopy("script.js");
+  eleventyConfig.addPassthroughCopy({ "bootcamp": "portfolio/bootcamp" });
+  eleventyConfig.addPassthroughCopy({ "keeper-app": "portfolio/keeper" });
 
   return {
     markdownTemplateEngine: "njk",

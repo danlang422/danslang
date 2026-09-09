@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Simon</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body>
+  <h1 id="level-title">Press A Key to Start</h1>
+  <div class="container">
+    <div class="row">
+
+      <div type="button" id="green" class="btn green">
+
+      </div>
+
+      <div type="button" id="red" class="btn red">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div type="button" id="yellow" class="btn yellow">
+
+      </div>
+      <div type="button" id="blue" class="btn blue">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <a href="../index.html" style="position:fixed;bottom:18px;left:18px;font-family:sans-serif;font-size:13px;font-weight:700;color:#011F3F;background:#FEF2BF;text-decoration:none;padding:8px 14px;border-radius:999px;opacity:0.85;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">← all demos</a>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="game.js" charset="utf-8"></script>
+  <script>
+    // Mobile tap-to-start on the title
+    document.getElementById('level-title').addEventListener('click', function() {
+      $(document).trigger('keydown');
+    });
+  </script>
+</body>
+
+</html>

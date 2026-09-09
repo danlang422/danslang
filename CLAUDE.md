@@ -23,6 +23,9 @@ The whole site is Eleventy-rendered from `content/` — home, portfolio, and pos
 - Output dir: `_site/`
 - Includes dir: `content/_includes/`
 - Passthrough copies: `assets/`, `styles.css`, `script.js` (these live at the repo root as source but get copied into `_site/` on build — they're not processed by Eleventy, just carried through)
+- Two more passthrough folders serve standalone static sub-projects under `/portfolio/`, remapped to a different output path via the object form of `addPassthroughCopy`:
+  - `bootcamp/` → `_site/portfolio/bootcamp/` — the old `bootcamp-demos` GitHub Pages site (landing page + 4 static demo folders: drum-kit, simon-game, tin-dog, portfolio-site-demo), relocated wholesale. Fully self-contained HTML/CSS/JS with relative internal paths; edit files directly under `bootcamp/` if they need changes.
+  - `keeper-app/` → `_site/portfolio/keeper/` — a manually-rebuilt static snapshot of the separate Keeper App repo (a Vite/React app, not part of this repo). It is **not** built as part of `npm run build`; to update it, rebuild the Keeper App project with `npx vite build --base=/portfolio/keeper/` and copy the resulting `dist/` contents over `keeper-app/` here (re-adding the small "← Portfolio" back-link in `keeper-app/index.html` if it gets overwritten).
 - Custom shortcodes: `{% shot src, alt, crop %}` (single image, `crop` adds the crop/expand treatment used by the lightbox) and `{% figrow "caption" %}...{% endfigrow %}` (paired shortcode, lays multiple `{% shot %}` calls side-by-side under one shared caption). Both are usable directly inside `.md` post content since `markdownTemplateEngine: "njk"` is set.
 
 ### Content structure and permalinks
