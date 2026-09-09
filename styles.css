@@ -420,3 +420,34 @@ body {
   color: #8a8273;
   text-align: center;
 }
+
+.post-img-fig--row .post-img-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.post-img-fig--row .post-img-row .post-img-wrap {
+  flex: 1 1 260px;
+  margin: 0;
+}
+
+/* CASE STUDY PROPERTY DETAILS */
+.post-body details {
+  border: 1px solid #e3d9c4;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 0 0 10px;
+  box-shadow: 0 14px 30px rgba(44,51,64,.08);
+}
+.post-body details summary {
+  cursor: pointer;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+.post-body details[open] summary { margin-bottom: 10px; }
+.post-body details p { font-size: 18px; margin: 0; }
+.post-body details p:not(:last-child) { margin-bottom: 10px; }
+
+/* WIDE POST LAYOUT (opt-in via front-matter `wide: true`) */
+.post-body--wide { max-width: 960px; }

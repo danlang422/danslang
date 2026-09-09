@@ -2,6 +2,7 @@
    title: "Here: Scheduling and Attendance for Schools That Don't Fit the Mold"
    date: 2026-09-08
    tags: [posts, case-study]
+   wide: true
 ---
 # Here: Scheduling and Attendance for Schools That Don't Fit the Mold
 
@@ -13,13 +14,9 @@
 
 **Here** is a scheduling, attendance, and engagement app built for schools where a traditional bell schedule doesn't describe how students actually spend their day. It was designed specifically for City View Community High School in Cedar Rapids, Iowa.  City View is a magnet high school where students split time across internships, online and community college courses, independent study, classes at other high schools, and traditional, in-person classes, often with a different mix for every single student.
 
-<figure class="post-img-fig">
-<div class="post-img-wrap post-img-wrap--crop">
-<img src="/assets/here-case-study/here-landing-page.png" alt="Here landing page">
-<span class="post-img-expand">view full ↗</span>
-</div>
-<figcaption>Here's landing page while live for testing at sayhere.xyz</figcaption>
-</figure>
+{% figrow "Here's landing page while live for testing at sayhere.xyz" %}
+{% shot "/assets/here-case-study/here-landing-page.png", "Here landing page", true %}
+{% endfigrow %}
 
 I'm Daniel Lang, a former high school teacher who moved into development after a full-stack bootcamp, and I started building Here while still subbing at City View after budget cuts eliminated my full time position. Here is a solo project: I designed, built, and maintained every part of it, from the database schema to the security audit.
 
@@ -56,22 +53,38 @@ Again, this may not seem terribly complicated, but this is just one example with
 In other early versions, it seemed to make sense to define various types of activity as a way of enabling or disabling certain behaviors in the app. An internship activity, for example, would require students to check-in/out with geolocation enabled. Students working independently might have a required check-in/out, but no geolocation. Both require a City View staff member to monitor attendance, whereas attendance is handled elsewhere for college courses or classes at another high school. 
 
 Instead of baking these and other behaviors into specific activity types, Here utilizes a set of properties that can be customized for each activity, as needed: 
-- Requires Attendance
-    - Toggled on by default, this property can be disabled for external courses, while still allowing these courses to appear in the student agenda.
-- Requires Check-In/Out
-    - Activities with this property enabled will allow students to check-in and out, allowing for time tracking of activities like internships. Students are also prompted to share their plans when checking in, and progress, when checking out. 
-- Enable Presence 'Wave'
-    - Entirely optional, this property simply adds a virtual way for students to "say hey" and serves as an engagement hook, as well as providing an option for a less formal "check-in" in activities where students might be scattered throughout a space. 
-- Allows Freeform Tagging
-    - This property works in tandem with the 'Not Scheduled' property (see below), and allows students to "tag" what they're working on from a list of unscheduled activities, such as online courses. 
-- Requires Geolocation
-    - With this property enabled, students are prompted to share their location when checking in and out. This is typically reserved for off-site internships. Geofence radius and the location of the activity are set by admin users during activity creation. Importantly, even if the student's location is outside of the geofence radius, they are not prevented from checking in or out, but the 'out-of-bounds' state is logged and flagged for staff to review. 
-- Release
-    - This property simply indicates a period of time during which the student is released from campus, typically during lunch or free periods with parent and staff approval. 
-- Not Scheduled
-    - Activities that are "not scheduled" are typically online courses, which can be worked on at any time. These do not appear on teacher or student agendas, but can be "tagged" during activities with the "Allows Freeform Tagging" property enabled. 
-- Visible to All Staff
-    - This property, when enabled, makes an activity visible to all staff members, regardless of staff specifically assigned. In a small, collaborative environment like City View, responsibility for monitoring students and taking attendance is often shared between whoever is present and available at that time. For staff who are not assigned to the activity, visible-to-all activities appear in their sidebar, organized by time. There, they can view the activity roster and take attendance as needed. 
+
+<details><summary>Requires Attendance</summary>
+<p>Toggled on by default, this property can be disabled for external courses, while still allowing these courses to appear in the student agenda.</p>
+</details>
+
+<details><summary>Requires Check-In/Out</summary>
+<p>Activities with this property enabled will allow students to check-in and out, allowing for time tracking of activities like internships. Students are also prompted to share their plans when checking in, and progress, when checking out.</p>
+</details>
+
+<details><summary>Enable Presence 'Wave'</summary>
+<p>Entirely optional, this property simply adds a virtual way for students to "say hey" and serves as an engagement hook, as well as providing an option for a less formal "check-in" in activities where students might be scattered throughout a space.</p>
+</details>
+
+<details><summary>Allows Freeform Tagging</summary>
+<p>This property works in tandem with the 'Not Scheduled' property (see below), and allows students to "tag" what they're working on from a list of unscheduled activities, such as online courses.</p>
+</details>
+
+<details><summary>Requires Geolocation</summary>
+<p>With this property enabled, students are prompted to share their location when checking in and out. This is typically reserved for off-site internships. Geofence radius and the location of the activity are set by admin users during activity creation. Importantly, even if the student's location is outside of the geofence radius, they are not prevented from checking in or out, but the 'out-of-bounds' state is logged and flagged for staff to review.</p>
+</details>
+
+<details><summary>Release</summary>
+<p>This property simply indicates a period of time during which the student is released from campus, typically during lunch or free periods with parent and staff approval.</p>
+</details>
+
+<details><summary>Not Scheduled</summary>
+<p>Activities that are "not scheduled" are typically online courses, which can be worked on at any time. These do not appear on teacher or student agendas, but can be "tagged" during activities with the "Allows Freeform Tagging" property enabled.</p>
+</details>
+
+<details><summary>Visible to All Staff</summary>
+<p>This property, when enabled, makes an activity visible to all staff members, regardless of staff specifically assigned. In a small, collaborative environment like City View, responsibility for monitoring students and taking attendance is often shared between whoever is present and available at that time. For staff who are not assigned to the activity, visible-to-all activities appear in their sidebar, organized by time. There, they can view the activity roster and take attendance as needed.</p>
+</details>
 
 **Multi-staff activities.** Real activities often have more than one adult attached to them: a teacher and a monitor, or two co-teachers. Here replaced a rigid `teacher_id`/`monitor_id` pair on each activity with a proper `activity_staff` junction table, so any activity can carry an arbitrary set of staff with distinct roles. This also would allow for the addition of internship mentors as staff, an in-app role that was envisioned, but not built out. 
 
@@ -81,8 +94,12 @@ Instead of baking these and other behaviors into specific activity types, Here u
 
 **Sign-in and the public site.** A minimal sign-in screen, and a small marketing site (landing page, About, Trust & Privacy) explaining what Here is and why it exists.
 
-![Sign in](/assets/here-case-study/here-sign-in-ss.png)
-![About page](/assets/here-case-study/here-about-page.png)
+{% shot "/assets/here-case-study/here-sign-in-ss.png", "Sign in" %}
+
+{% figrow "Here's About and Trust & Privacy pages" %}
+{% shot "/assets/here-case-study/here-about-page.png", "About page", true %}
+{% shot "/assets/here-case-study/here-trust-and-privacy.png", "Trust and privacy page", true %}
+{% endfigrow %}
 
 **Admin: the calendar.** The admin calendar shows every activity across every organization at a glance, grouping by block (if assigned) or by timeframe. Each activity cluster shows simplified details on hover, with per-day-per-cluster popovers breaking down exactly who's staffed and scheduled where.
 
@@ -98,12 +115,14 @@ Instead of baking these and other behaviors into specific activity types, Here u
 
 **Admin: attendance rollup.** The compliance view — attendance across every block for a given day, grouped and flagged by exception (absent, tardy, excused, unmarked), so an admin can see the whole school's attendance picture without opening 30 individual rosters.
 
-![Attendance rollup](/assets/here-case-study/here-attendance-rollup.png)
+{% shot "/assets/here-case-study/here-attendance-rollup.png", "Attendance rollup", true %}
 
 **Student: today view.** Students get a clean agenda reflecting their actual, individual day — not a generic block schedule — with the ability to check in, "wave" to let staff know they're on track, and leave a short reflection note.
 
-![Student agenda](/assets/here-case-study/here-student-agenda-ss.png)
-![Student reflection](/assets/here-case-study/here-student-reflection-filled-1-ss.png)
+{% figrow "Student agenda, and the reflection prompt shown after checking out" %}
+{% shot "/assets/here-case-study/here-student-agenda-ss.png", "Student agenda" %}
+{% shot "/assets/here-case-study/here-student-reflection-filled-1-ss.png", "Student reflection" %}
+{% endfigrow %}
 
 **Off-campus check-in, with geofencing.** For internships and off-campus courses, Here can require students to be within a set radius of a real-world address to check in. Admins set the location with an address-autocomplete search when building the activity:
 

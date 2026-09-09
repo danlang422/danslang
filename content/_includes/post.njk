@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 ---
-<article class="post-body">
+<article class="post-body{% if wide %} post-body--wide{% endif %}">
   <h1 class="post-title">{{ title }}</h1>
   <p class="post-date">{{ date.toDateString() }}</p>
   {{ content | safe }}
