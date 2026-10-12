@@ -451,3 +451,25 @@ body {
 
 /* WIDE POST LAYOUT (opt-in via front-matter `wide: true`) */
 .post-body--wide { max-width: 960px; }
+/* BOOK CARDS (standalone recommendation pages) */
+.book-card {
+  display: flex; gap: 24px; align-items: flex-start;
+  margin: 0 0 36px; padding: 20px;
+  background: #fbf6ea; border: 1px solid #e3d9c4; border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(44,51,64,.08);
+}
+.book-cover-link { flex: 0 0 130px; }
+.post-body .book-cover { width: 130px; margin: 0; border-radius: 6px; box-shadow: 0 6px 14px rgba(44,51,64,.18); }
+.book-info { flex: 1; min-width: 0; }
+.post-body .book-title {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+  font-size: 26px; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 4px;
+}
+.post-body .book-author { font-size: 17px; color: #8a8273; font-style: italic; margin: 0 0 14px; }
+.post-body .book-note p { font-size: 18px; margin: 0 0 14px; }
+.book-link { font-family: 'Space Mono', monospace; font-size: 13px; color: #bf6a3a; text-decoration: none; }
+.book-link:hover { text-decoration: underline; }
+@media (max-width: 560px) {
+  .book-card { flex-direction: column; }
+  .book-cover-link { flex-basis: auto; }
+}
